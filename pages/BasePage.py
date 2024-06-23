@@ -55,7 +55,7 @@ class BasePage:
             )
         else:
                 raise ValueError(f"Invalid locator type: {locator_name}")
-            return element
-        except Exception as e:
-            print(f"An error occurred: {e}")
-            return None
+        return element
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None
