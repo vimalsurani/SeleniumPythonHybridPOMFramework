@@ -2,6 +2,7 @@ import allure
 import pytest
 from allure_commons.types import AttachmentType
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 from utilities import ReadConfigurations
 
@@ -29,7 +30,11 @@ def setup_and_teardown(request):
     global driver
     driver = None
     if browser.__eq__("chrome"):
-        driver = webdriver.Chrome()
+        options = Options()
+        options.add_argument("--headless")
+        options.add_argument("--no-sandbox")
+        options.add_argument("--disable-dev-shm-usage")
+        driver = webdriver.Chrome(options=options)
     elif browser.__eq__("firefox"):
         driver = webdriver.Firefox()
     elif browser.__eq__("edge"):
