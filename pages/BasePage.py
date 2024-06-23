@@ -53,9 +53,4 @@ class BasePage:
             element = WebDriverWait(self.driver, self.wait_time).until(
                 EC.presence_of_element_located((By.CSS_SELECTOR, locator_value))
             )
-        else:
-                raise ValueError(f"Invalid locator type: {locator_name}")
         return element
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        return None
